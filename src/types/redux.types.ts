@@ -8,7 +8,18 @@ export interface ITodoState {
     todoList: string;
 }
 
+// user
+export interface IUserState extends ILoadingAndError {
+    userName: string | null;
+}
+
+
+export interface ILoadingAndError {
+    loading: boolean;
+    error: '';
+}
 
 export interface IRootReduxStats {
-    todo: ITodoState
+    todo: ITodoState;
+    user: IUserState;
 }

@@ -2,22 +2,24 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { Jumbotron, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addTodos } from '../redux/action'
+import { getUser } from '../redux/action'
 import { IRootReduxStats } from '../types';
 
 export interface IHomeStatsProps extends RouteComponentProps {
-    todoList: string
-    addTodos(todoList: string): void
+    userName: string | null;
+    loading: boolean;
+    getUser(username: string): void;
 }
 
 class Home extends React.Component<IHomeStatsProps, {}> {
     handleClick = () => {
-        this.props.addTodos('done')
+        this.props.getUser('pritesh')
     }
     public render() {
         return (
             <Jumbotron>
-                {this.props.todoList}
+                {this.props.loading && 'Loding...'}
+                {this.props.userName}
                 <Button onClick={this.handleClick}>
                     Click
                  </Button>
@@ -26,13 +28,14 @@ class Home extends React.Component<IHomeStatsProps, {}> {
     }
 }
 
-const mapStatsToProps = ({ todo }: IRootReduxStats) => {
-    const { todoList } = todo
+const mapStatsToProps = ({ user }: IRootReduxStats) => {
+    const { userName, loading } = user
     return {
-        todoList
+        userName,
+        loading
     }
 }
 
 export default connect(mapStatsToProps, {
-    addTodos
+    getUser
 })(Home)
