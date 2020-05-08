@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { Jumbotron } from 'reactstrap';
 
 
-const Home = React.lazy(() => import('./components/home'))
+const Home = React.lazy(() => import('./screen/home/home'))
 const Login = React.lazy(() => import('./screen/login/login'))
 
 
