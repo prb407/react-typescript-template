@@ -2,8 +2,8 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { Jumbotron, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { getUser } from '../redux/action'
-import { IRootReduxStats } from '../types';
+import { getUser } from '../../redux/action'
+import { IRootReduxStats } from '../../types';
 
 export interface IHomeStatsProps extends RouteComponentProps {
     userName: string | null;
