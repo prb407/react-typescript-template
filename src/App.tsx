@@ -4,6 +4,7 @@ import { Jumbotron } from 'reactstrap';
 
 
 const Home = React.lazy(() => import('./components/home'))
+const Login = React.lazy(() => import('./screen/login/login'))
 
 
 class App extends React.Component<any, any> {
@@ -18,6 +19,11 @@ class App extends React.Component<any, any> {
                 <Route
                   path="/app"
                   component={Home}
+                  exact
+                />
+                <Route
+                  path="/login"
+                  component={Login}
                   exact
                 />
                 <Redirect to="/404" />
