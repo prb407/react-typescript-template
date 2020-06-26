@@ -13,6 +13,7 @@ export const userReducer = (state = init, action: IReducerActionType) => {
         case USER.GET_USER:
             return { ...state, loading: true } as IUserState
         case USER.GET_USER_SUCCESS:
+            console.log('done')
             return {
                 ...state,
                 loading: false,

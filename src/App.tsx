@@ -1,11 +1,10 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { Jumbotron } from 'reactstrap';
 
 
-const Home = React.lazy(() => import('./screen/home/home'))
+const AppView = React.lazy(() => import('./screen/app'))
 const Login = React.lazy(() => import('./screen/login/login'))
-
 
 class App extends React.Component<any, any> {
   public render() {
@@ -15,11 +14,12 @@ class App extends React.Component<any, any> {
           <Suspense fallback={<div className="loading" />}>
             <Router>
               <Switch>
-                {/* <Redirect path="/" to="/app" /> */}
+                <Redirect exact path="/" to="/app" />
                 <Route
                   path="/app"
-                  component={Home}
-                  exact
+                  render={(props: any) => (
+                    <AppView {...props} />
+                  )}
                 />
                 <Route
                   path="/login"
